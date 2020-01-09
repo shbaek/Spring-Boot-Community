@@ -2,10 +2,8 @@ package com.web;
 
 import com.web.domain.Board;
 import com.web.domain.User;
-import com.web.domain.enums.BoardType;
 import com.web.repository.BoardRepository;
 import com.web.repository.UserRepository;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,7 +45,7 @@ public class JpaMappingTest {
                 .title(boardTestTitle)
                 .subTitle("서브 타이틀")
                 .content("컨텐츠")
-                .boardType(BoardType.free)
+                .boardType(com.community.rest.domain.enums.BoardType.free)
                 .createdDate(LocalDateTime.now())
                 .updatedDate(LocalDateTime.now())
                 .user(user).build());
@@ -64,7 +62,7 @@ public class JpaMappingTest {
         assertThat(board.getTitle(), is(boardTestTitle));
         assertThat(board.getSubTitle(), is("서브 타이틀"));
         assertThat(board.getContent(), is("컨텐츠"));
-        assertThat(board.getBoardType(), is(BoardType.free));
+        assertThat(board.getBoardType(), is(com.community.rest.domain.enums.BoardType.free));
     }
 
 }
