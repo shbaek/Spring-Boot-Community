@@ -5,7 +5,6 @@ build/
 !**/src/test/**
 src/main/resources/application-oauth.yml
 src/main/resources/application-oauth2.yml
-src/main/resources/application-real.yml
 src/main/resources/application-real-db.yml
 
 ### STS ###
