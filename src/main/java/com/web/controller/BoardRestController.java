@@ -1,6 +1,7 @@
 package com.web.controller;
 
 import com.web.domain.Board;
+import com.web.domain.BoardsResponseDto;
 import com.web.repository.BoardRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +17,9 @@ public class BoardRestController {
     }
 
     @GetMapping("/api/boards/{idx}")
-    public ResponseEntity<?> getBoards(@PathVariable("idx") Long idx) {
-        Board persistBoard = boardRepository.getOne(idx);
+    public BoardsResponseDto getBoards(@PathVariable("idx") Long idx) {
 
-        return new ResponseEntity<>(persistBoard, HttpStatus.OK);
+        return boardRepository.findByUserId(idx);
     }
 
 
