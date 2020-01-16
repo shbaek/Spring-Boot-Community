@@ -14,7 +14,6 @@ public class BoardsResponseDto {
     private com.community.rest.domain.enums.BoardType boardType;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private User user;
 
     public BoardsResponseDto(Board entity) {
         this.idx = entity.getIdx();
@@ -24,6 +23,5 @@ public class BoardsResponseDto {
         this.boardType = entity.getBoardType();
         this.createdDate = entity.getCreatedDate();
         this.updatedDate = entity.getUpdatedDate();
-        this.user = entity.getUser();
     }
 }
