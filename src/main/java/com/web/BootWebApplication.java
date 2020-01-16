@@ -5,7 +5,6 @@ import com.web.domain.User;
 import com.web.repository.BoardRepository;
 import com.web.repository.UserRepository;
 import com.web.resolver.UserArgumentResolver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,8 +19,11 @@ import java.util.stream.IntStream;
 @SpringBootApplication
 public class BootWebApplication extends WebMvcConfigurerAdapter {
 
-    @Autowired
     private UserArgumentResolver userArgumentResolver;
+
+    public BootWebApplication(UserArgumentResolver userArgumentResolver) {
+        this.userArgumentResolver = userArgumentResolver;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(BootWebApplication.class, args);
@@ -44,8 +46,8 @@ public class BootWebApplication extends WebMvcConfigurerAdapter {
 
             IntStream.rangeClosed(1, 200).forEach(index ->
                     boardRepository.save(Board.builder()
-                            .title("게시글"+index)
-                            .subTitle("순서"+index)
+                            .title("게시글" + index)
+                            .subTitle("순서" + index)
                             .content("컨텐츠")
                             .boardType(com.community.rest.domain.enums.BoardType.free)
                             .createdDate(LocalDateTime.now())
