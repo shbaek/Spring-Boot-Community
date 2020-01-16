@@ -1,9 +1,14 @@
 package com.web.controller;
 
+import com.web.annotation.SocialUser;
 import com.web.domain.Board;
+import com.web.domain.User;
 import com.web.repository.BoardRepository;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,6 +19,13 @@ public class BoardRestController {
     public BoardRestController(BoardRepository boardRepository) {
         this.boardRepository = boardRepository;
     }
+
+    @GetMapping("/api/boards")
+    public String list(@PageableDefault Pageable pageable, @SocialUser User user, Model model) {
+        model.addAttribute("boardList", boardRepository.findAll(pageable));
+        return "/board/list";
+    }
+
 
     @PostMapping("/api/boards")
     public ResponseEntity<?> postBoard(@RequestBody Board board) {
