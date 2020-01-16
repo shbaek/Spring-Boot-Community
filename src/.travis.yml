@@ -13,6 +13,7 @@ cache:
     - '$HOME/.gradle'
 
 before_install:
+  - gem install rake
   - chmod +x gradlew
 
 
