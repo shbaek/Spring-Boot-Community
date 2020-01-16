@@ -38,7 +38,7 @@ public class BootWebApplication extends WebMvcConfigurerAdapter {
             User user = userRepository.save(User.builder()
                     .name("havi")
                     .password("test")
-                    .email("asmita.bella@gmail.com")
+                    .email("test@gmail.com")
                     .createdDate(LocalDateTime.now())
                     .build());
 

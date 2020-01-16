@@ -74,17 +74,17 @@
                 boardType: $('#board_type option:selected').val()
             });
             $.ajax({
-                       url: "http://localhost:8081/api/boards",
-                       type: "POST",
-                       data: jsonData,
-                       contentType: "application/json",
-                       headers: {
-                           "Authorization": "Basic " + btoa("havi" + ":" + "test")
-                       },
-                       dataType: "json",
-                           success: function () {
-                               alert('저장 성공!');
-                               location.href = '/board/list';
+                url: "http://localhost:8080/api/boards",
+                type: "POST",
+                data: jsonData,
+                contentType: "application/json",
+                headers: {
+                    "Authorization": "Basic " + btoa("havi" + ":" + "test")
+                },
+                dataType: "json",
+                success: function () {
+                    alert('저장 성공!');
+                    location.href = '/board/list';
                        },
                        error: function () {
                            alert('저장 실패!');
@@ -102,32 +102,32 @@
                 createdDate: $('#board_create_date').val()
             });
             $.ajax({
-                       url: "http://localhost:8081/api/boards/" + $('#board_idx').val(),
-                       type: "PUT",
-                       data: jsonData,
-                       contentType: "application/json",
-                       dataType: "json",
-                       success: function () {
-                           alert('수정 성공!');
-                           location.href = '/board/list';
-                       },
-                       error: function () {
-                           alert('수정 실패!');
+                url: "http://localhost:8080/api/boards/" + $('#board_idx').val(),
+                type: "PUT",
+                data: jsonData,
+                contentType: "application/json",
+                dataType: "json",
+                success: function () {
+                    alert('수정 성공!');
+                    location.href = '/board/list';
+                },
+                error: function () {
+                    alert('수정 실패!');
                        }
                    });
         });
         $('#delete').click(function () {
             $.ajax({
-                       url: "http://localhost:8081/api/boards/" + $('#board_idx').val(),
-                       type: "DELETE",
-                       success: function () {
-                           alert('삭제 성공!');
-                           location.href = '/board/list';
-                       },
-                       error: function () {
-                           alert('삭제 실패!');
-                       }
-                   });
+                url: "http://localhost:8080/api/boards/" + $('#board_idx').val(),
+                type: "DELETE",
+                success: function () {
+                    alert('삭제 성공!');
+                    location.href = '/board/list';
+                },
+                error: function () {
+                    alert('삭제 실패!');
+                }
+            });
         });
     </script>
 </body>

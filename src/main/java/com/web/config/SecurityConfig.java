@@ -1,7 +1,6 @@
 package com.web.config;
 
 import com.web.oauth2.CustomOAuth2Provider;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
 import org.springframework.context.annotation.Bean;
@@ -21,9 +20,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static com.web.domain.enums.SocialType.FACEBOOK;
-import static com.web.domain.enums.SocialType.GOOGLE;
-import static com.web.domain.enums.SocialType.KAKAO;
+import static com.web.domain.enums.SocialType.*;
 
 /**
  * Created by KimYJ on 2017-09-12.
@@ -36,8 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
         http
-            .authorizeRequests()
-                .antMatchers("/", "/oauth2/**", "/login/**",  "/css/**", "/images/**", "/js/**", "/console/**").permitAll()
+                .authorizeRequests()
+                .antMatchers("/", "/oauth2/**", "/login/**", "/css/**", "/images/**", "/js/**", "/console/**", "/api/**", "/board/**").permitAll()
                 .antMatchers("/facebook").hasAuthority(FACEBOOK.getRoleType())
                 .antMatchers("/google").hasAuthority(GOOGLE.getRoleType())
                 .antMatchers("/kakao").hasAuthority(KAKAO.getRoleType())

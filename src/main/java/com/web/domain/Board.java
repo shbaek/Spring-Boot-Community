@@ -15,7 +15,8 @@ import java.time.LocalDateTime;
 @Table
 public class Board implements Serializable {
 
-    @Id @Column
+    @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
@@ -42,7 +43,7 @@ public class Board implements Serializable {
     private User user;
 
     @Builder
-    public Board (String title, String subTitle, String content, BoardType boardType, LocalDateTime createdDate, LocalDateTime updatedDate, User user) {
+    public Board(String title, String subTitle, String content, BoardType boardType, LocalDateTime createdDate, LocalDateTime updatedDate, User user) {
         this.title = title;
         this.subTitle = subTitle;
         this.content = content;
@@ -50,5 +51,21 @@ public class Board implements Serializable {
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
         this.user = user;
+    }
+
+    public void setCreatedDateNow() {
+        this.createdDate = LocalDateTime.now();
+    }
+
+    public void setUpdatedDateNow() {
+        this.updatedDate = LocalDateTime.now();
+    }
+
+    public void update(Board board) {
+        this.title = board.title;
+        this.subTitle = board.subTitle;
+        this.content = board.content;
+        this.boardType = board.boardType;
+        this.updatedDate = LocalDateTime.now();
     }
 }
