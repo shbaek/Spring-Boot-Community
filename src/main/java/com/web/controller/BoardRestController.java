@@ -1,11 +1,12 @@
 package com.web.controller;
 
 import com.web.domain.Board;
-import com.web.domain.BoardsResponseDto;
 import com.web.repository.BoardRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 public class BoardRestController {
@@ -16,10 +17,11 @@ public class BoardRestController {
         this.boardRepository = boardRepository;
     }
 
-    @GetMapping("/api/boards/{idx}")
-    public BoardsResponseDto getBoards(@PathVariable("idx") Long idx) {
 
-        return boardRepository.findByUserId(idx);
+    @GetMapping("/api/boards/{idx}")
+    public Optional<Board> getBoards(@PathVariable("idx") Long idx) {
+
+        return boardRepository.findById(idx);
     }
 
 
